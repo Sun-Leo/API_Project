@@ -91,7 +91,7 @@
        @await Component.InvokeAsync("Staff")
         <!-- Team End -->
         <!-- Newsletter Start -->
-       @await Component.InvokeAsync("Subscribe")
+        @await Html.PartialAsync("/Views/Subscribe/SubscribePartial.cshtml")
         <!-- Newsletter Start -->
         <!-- Footer Start -->
        @await Component.InvokeAsync("Footer")
