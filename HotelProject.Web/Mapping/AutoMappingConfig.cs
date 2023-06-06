@@ -9,6 +9,8 @@ using HotelProject.Web.DTOS.TestimonialDtos;
 using HotelProject.Web.DTOS.StaffDtos;
 using HotelProject.Web.DTOS.SubscribeDtos;
 using HotelProject.Web.DTOS.BookingDtos;
+using HotelProject.Web.DTOS.Contact;
+using HotelProject.Web.DTOS.GuestDtos;
 
 namespace HotelProject.Web.Mapping
 {
@@ -28,6 +30,12 @@ namespace HotelProject.Web.Mapping
             CreateMap<UpdateAboutDto, About>().ReverseMap();
 
             CreateMap<ResultRoomDto, Room>().ReverseMap();
+            CreateMap<UpdateRoomDto, Room>().ReverseMap();
+            CreateMap<CreateRoomDto, Room>().ReverseMap();
+
+            CreateMap<ResultGuestDto, Guest>().ReverseMap();
+            CreateMap<UpdateGuestDto, Guest>().ReverseMap();
+            CreateMap<CreateGuestDto, Guest>().ReverseMap();
 
             CreateMap<ResultStaffDto, Staff>().ReverseMap();
             CreateMap<CreateSubscribeDto, Subscribe>().ReverseMap();
@@ -36,6 +44,7 @@ namespace HotelProject.Web.Mapping
             CreateMap<ResultBookingDto, Booking>().ReverseMap();
             CreateMap<ApprovedReservationDto, Booking>().ReverseMap();
 
+            CreateMap<CreateContactDto, Contact>().ReverseMap();
 
 
             CreateMap<ResultTestimonialDto, Testimonial>().ReverseMap();

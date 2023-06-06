@@ -33,7 +33,7 @@ namespace HotelProject.Web.Controllers
             var client= _httpClientFactory.CreateClient();
             var jsonData= JsonConvert.SerializeObject(createBookingDto);
             StringContent content = new StringContent(jsonData, Encoding.UTF8,"application/json");
-           var responsmessage= await client.PostAsync("https://localhost:44375/api/Booking", content);
+           var responsmessage= await client.PostAsync("https://localhost:44375/api/Booking",content);
             if(responsmessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index","Default");

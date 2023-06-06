@@ -1,9 +1,13 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using HotelProject.BuninessLayer.Abstract;
 using HotelProject.BuninessLayer.Concrete;
 using HotelProject.DataAccessLayer.Abstract;
 using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.DataAccessLayer.EntityFramework;
 using HotelProject.EntityLayer.Concrete;
+using HotelProject.Web.DTOS.GuestDtos;
+using HotelProject.Web.ValidationRules.GuestValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +17,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IValidator<CreateGuestDto>, CreateGuestValidator>();
+builder.Services.AddControllersWithViews().AddFluentValidation();
 
 builder.Services.AddScoped<IBookingDal, EFBookingDal>();
 builder.Services.AddScoped<IBookingServices, BookingManager>();

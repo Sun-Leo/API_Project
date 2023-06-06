@@ -35,7 +35,7 @@ namespace HotelProject.Web.Controllers
             var responsmessage = await client.PostAsync("https://localhost:44375/api/Subscribe", content);
             if (responsmessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index","Default");
+                return RedirectToAction("Index", "Default");
             }
             return View();
         }

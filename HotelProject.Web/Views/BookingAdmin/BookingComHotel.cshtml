@@ -12,6 +12,13 @@
                 <h4>Oteller</h4>
             </div>
             <div class="table-responsive">
+                @using (Html.BeginForm("BookingComHotel", "BookingAdmin", FormMethod.Post))
+                {
+                    <label>Otel ID</label>
+                    <input type="text" class="form-control" name="cityID">
+                    <br />
+                    <button class="btn mb-1 btn-rounded btn-outline-dark">Ara</button>
+                }
                 <table class="table">
                     <thead>
                         <tr>
