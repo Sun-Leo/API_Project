@@ -14,7 +14,7 @@
                     <h3 class="card-title text-white">Misafirlerimiz</h3>
                     <div class="d-inline-block">
                         <h2 class="text-white">@ViewBag.guest</h2>
-                        <p class="text-white mb-0">@DateTime.Now.Year</p>
+                        <p class="text-white mb-0">@DateTime.Now.ToString("MMMM")-@DateTime.Now.Year</p>
                     </div>
                     <span class="float-right display-5 opacity-5"><i class="fa fa-user"></i></span>
                 </div>
@@ -26,7 +26,7 @@
                     <h3 class="card-title text-white">Çalışanlarımız</h3>
                     <div class="d-inline-block">
                         <h2 class="text-white">@ViewBag.staff</h2>
-                        <p class="text-white mb-0">@DateTime.Now.Year</p>
+                        <p class="text-white mb-0">@DateTime.Now.ToString("MMMM")-@DateTime.Now.Year</p>
                     </div>
                     <span class="float-right display-5 opacity-5"><i class="fa fa-battery"></i></span>
                 </div>
@@ -38,7 +38,7 @@
                     <h3 class="card-title text-white">Odalarımız</h3>
                     <div class="d-inline-block">
                         <h2 class="text-white">@ViewBag.room</h2>
-                        <p class="text-white mb-0">@DateTime.Now.Year</p>
+                        <p class="text-white mb-0">@DateTime.Now.ToString("MMMM")-@DateTime.Now.Year</p>
                     </div>
                     <span class="float-right display-5 opacity-5"><i class="fa fa-home"></i></span>
                 </div>
@@ -50,7 +50,7 @@
                     <h3 class="card-title text-white">Hizmetlerimiz</h3>
                     <div class="d-inline-block">
                         <h2 class="text-white">@ViewBag.services</h2>
-                        <p class="text-white mb-0">@DateTime.Now.Year</p>
+                        <p class="text-white mb-0">@DateTime.Now.ToString("MMMM")-@DateTime.Now.Year</p>
                     </div>
                     <span class="float-right display-5 opacity-5"><i class="fa fa-photo"></i></span>
                 </div>
@@ -59,29 +59,10 @@
     </div>
 
     @await Component.InvokeAsync("StaffListAdmin")
-
+  
     <div class="row">
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="social-graph-wrapper widget-facebook">
-                    <span class="s-icon"><i class="fa fa-facebook"></i></span>
-                </div>
-                <div class="row">
-                    <div class="col-6 border-right">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @await Component.InvokeAsync("FaceBookFollowers")
+
         <div class="col-lg-3 col-sm-6">
             <div class="card">
                 <div class="social-graph-wrapper widget-linkedin">
@@ -90,19 +71,20 @@
                 <div class="row">
                     <div class="col-6 border-right">
                         <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
+                            <h4 class="m-1">350</h4>
+                            <p class="m-0">Takip Ettiklerim</p>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
+                            <h4 class="m-1">380</h4>
+                            <p class="m-0">Takipçiler</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-lg-3 col-sm-6">
             <div class="card">
                 <div class="social-graph-wrapper widget-googleplus">
@@ -111,19 +93,21 @@
                 <div class="row">
                     <div class="col-6 border-right">
                         <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
+                            <h4 class="m-1">1100</h4>
+                            <p class="m-0">Takip Ettiklerim</p>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
+                            <h4 class="m-1">528</h4>
+                            <p class="m-0">Takipçiler</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <div class="col-lg-3 col-sm-6">
             <div class="card">
                 <div class="social-graph-wrapper widget-twitter">
@@ -132,14 +116,14 @@
                 <div class="row">
                     <div class="col-6 border-right">
                         <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
+                            <h4 class="m-1">250</h4>
+                            <p class="m-0">Takip Ettiklerim</p>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
+                            <h4 class="m-1">500</h4>
+                            <p class="m-0">Takipçiler</p>
                         </div>
                     </div>
                 </div>

@@ -22,5 +22,24 @@ namespace API_Project.Controllers
             _contactServices.TInsert(contact);
             return Ok();
         }
+        [HttpGet]
+        public async Task<IActionResult> ContactList()
+        {
+           var value= _contactServices.TGetList();
+            return Ok(value);
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetContact(int id)
+        {
+            var values = _contactServices.TGetByID(id);
+            return Ok(values);
+        }
+        [HttpGet("GetContactCount")]
+        public IActionResult GetContactCount()
+        {
+            return Ok(_contactServices.TGetContactCount());
+        }
+       
+
     }
 }

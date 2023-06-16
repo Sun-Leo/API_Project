@@ -22,6 +22,7 @@ namespace API_Project.Controllers
             var value= _staffServices.TGetList();
             return Ok(value);
         }
+    
         [HttpPost]
         public IActionResult AddStaff(Staff staff)
         {

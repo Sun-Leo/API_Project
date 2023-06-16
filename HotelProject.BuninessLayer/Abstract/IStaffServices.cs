@@ -9,5 +9,6 @@ namespace HotelProject.BuninessLayer.Abstract
 {
     public interface IStaffServices: IGenericServices<Staff>
     {
+
     }
 }

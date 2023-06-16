@@ -17,11 +17,27 @@ namespace HotelProject.DataAccessLayer.EntityFramework
                 
         }
 
-        public void BookingStatusChangeApproved(Booking booking)
+        public void BookingStatusChangeApproved(int id)
         {
             var context = new Context();
-            var value=context.Bookings.Where(x => x.BookingID == booking.BookingID).FirstOrDefault();
+            var value = context.Bookings.Find(id);
             value.Status = "Onaylandı";
+            context.SaveChanges();
+        }
+
+        public void BookingStatusChangeCansel(int id)
+        {
+            var context = new Context();
+            var value = context.Bookings.Find(id);
+            value.Status = "İptal Edildi";
+            context.SaveChanges();
+        }
+
+        public void BookingStatusChangeWait(int id)
+        {
+            var context = new Context();
+            var value = context.Bookings.Find(id);
+            value.Status = "Müşteri Aranacak";
             context.SaveChanges();
         }
     }

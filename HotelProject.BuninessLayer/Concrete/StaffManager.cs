@@ -18,6 +18,8 @@ namespace HotelProject.BuninessLayer.Concrete
             _staffDal = staffDal;
         }
 
+      
+
         public void TDelete(Staff t)
         {
             _staffDal.Delete(t);

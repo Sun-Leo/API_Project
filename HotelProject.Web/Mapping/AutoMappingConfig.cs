@@ -11,6 +11,8 @@ using HotelProject.Web.DTOS.SubscribeDtos;
 using HotelProject.Web.DTOS.BookingDtos;
 using HotelProject.Web.DTOS.Contact;
 using HotelProject.Web.DTOS.GuestDtos;
+using HotelProject.Web.DTOS.Contact.SendMessage;
+using HotelProject.Web.DTOS.AppUserDtos;
 
 namespace HotelProject.Web.Mapping
 {
@@ -45,6 +47,13 @@ namespace HotelProject.Web.Mapping
             CreateMap<ApprovedReservationDto, Booking>().ReverseMap();
 
             CreateMap<CreateContactDto, Contact>().ReverseMap();
+            CreateMap<ResultContactDto, Contact>().ReverseMap();
+            CreateMap<GetMessageDto, Contact>().ReverseMap();
+
+            CreateMap<CreateSendMessageDto, SendMessage>().ReverseMap();
+            CreateMap<ResultSendMessage, SendMessage>().ReverseMap();
+
+            CreateMap<ResultAppUserDto, AppUser>().ReverseMap();
 
 
             CreateMap<ResultTestimonialDto, Testimonial>().ReverseMap();

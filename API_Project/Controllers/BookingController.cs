@@ -35,7 +35,7 @@ namespace API_Project.Controllers
             _bookingServices.TDelete(value);
             return Ok();
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public IActionResult GetBooking(int id)
         {
             var value = _bookingServices.TGetByID(id);
@@ -47,10 +47,22 @@ namespace API_Project.Controllers
             _bookingServices.TUpdate(booking);
             return Ok();
         }
-        [HttpPut("BookingStatus1")]
-        public IActionResult BookingStatus1(Booking booking)
+        [HttpGet("BookingStatus1")]
+        public IActionResult BookingStatus1(int id)
         {
-            _bookingServices.TBookingStatusChangeApproved(booking);
+            _bookingServices.TBookingStatusChangeApproved(id);
+            return Ok();
+        }
+        [HttpGet("BookingCansel")]
+        public IActionResult BookingCansel(int id)
+        {
+            _bookingServices.TBookingStatusChangeCansel(id);
+            return Ok();
+        }
+        [HttpGet("BookingWait")]
+        public IActionResult BookingWait(int id)
+        {
+            _bookingServices.TBookingStatusChangeWait(id);
             return Ok();
         }
     }

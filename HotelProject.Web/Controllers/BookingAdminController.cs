@@ -2,6 +2,7 @@
 using HotelProject.Web.Models.BookingCom;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace HotelProject.Web.Controllers
 {
@@ -73,7 +74,64 @@ namespace HotelProject.Web.Controllers
             }
             
         }
+        public async Task<IActionResult> ApprovedBooking(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responsmessage = await client.GetAsync($"https://localhost:44375/api/Booking/BookingStatus1?id={id}");
+            if (responsmessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
 
+        public async Task<IActionResult> CanselBooking(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responsmessage = await client.GetAsync($"https://localhost:44375/api/Booking/BookingCansel?id={id}");
+            if (responsmessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+        public async Task<IActionResult> WaitBooking(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responsmessage = await client.GetAsync($"https://localhost:44375/api/Booking/BookingWait?id={id}");
+            if (responsmessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateBooking(int id)
+        {
+            var client= _httpClientFactory.CreateClient();
+            var responsmessage = await client.GetAsync($"https://localhost:44375/api/Booking/{id}");
+            if (responsmessage.IsSuccessStatusCode)
+            {
+                var jsonData=await responsmessage.Content.ReadAsStringAsync();  
+                var value= JsonConvert.DeserializeObject<UpdateBookingDto>(jsonData);
+                return View(value);
+            }
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateBooking(UpdateBookingDto updateBookingDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateBookingDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responsmessage = await client.PutAsync("https://localhost:44375/api/Booking/UpdateBooking", stringContent);
+            if (responsmessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
 
     }
 }

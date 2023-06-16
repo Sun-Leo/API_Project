@@ -1,4 +1,5 @@
 ﻿using HotelProject.Web.DTOS.SubscribeDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -6,6 +7,7 @@ using System.Text;
 
 namespace HotelProject.Web.Controllers
 {
+    [AllowAnonymous]
     public class SubscribeController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

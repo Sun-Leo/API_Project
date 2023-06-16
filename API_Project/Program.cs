@@ -1,3 +1,4 @@
+using API_Project.Controllers;
 using HotelProject.BuninessLayer.Abstract;
 using HotelProject.BuninessLayer.Concrete;
 using HotelProject.DataAccessLayer.Abstract;
@@ -25,7 +26,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(option=>
+option.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -60,6 +62,17 @@ builder.Services.AddScoped<IContactServices, ContactManager>();
 
 builder.Services.AddScoped<IGuestDal, EFGuestDal>();
 builder.Services.AddScoped<IGuestServices, GuestManager>();
+
+builder.Services.AddScoped<ISendMessageDal, EFSendMessageDal>();
+builder.Services.AddScoped<ISendMessageServices, SendMessageManager>();
+
+builder.Services.AddScoped<IAppUserDal, EFAppUserDal>();
+builder.Services.AddScoped<IAppUserServices, AppUserManager>();
+
+builder.Services.AddScoped<IWorkLocationDal, EFWorkLocationDal>();
+builder.Services.AddScoped<IWorkLocationServices, WorkLocationManager>();
+
+builder.Services.AddScoped<FileImageController, FileImageController>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
